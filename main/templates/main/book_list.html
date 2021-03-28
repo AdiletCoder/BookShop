@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Book list {% endblock %}
+
+{% load static %}
+{% block content %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+         {% for book in books %}
+    <div class="col">
+    <div class="card">
+        {% if book.image %}
+      <img style="width: 250px; height: 350px;" src="{{ book.image.url }}" class="card-img-top" alt="...">
+        {% else %}
+        <img style="width: 250px; height: 350px;" src="{% static  'img/default image.png' %}" class="card-img-top" alt="...">
+        {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <p class="card-text">{{ book.status }}</p>
+          <a class="btn btn-success" href="{% url 'create-order' book.id %}" role="button">Buy</a>
+      </div>
+    </div>
+  </div>
+        {% endfor %}
+</div>
+{% endblock %}

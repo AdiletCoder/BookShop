@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Author Detail {% endblock %}
+{% load static %}
+{% block content %}
+<div class="card bg-dark text-white">
+    {% if author.image %}
+         <img src="{{ author.image.url }}" class="card-img" alt="...">
+    {% else %}
+        <img src="{% static 'img/Default-welcomer.png' %}" class="card-img" alt="...">
+    {% endif %}
+    <div class="card-img-overlay">
+    <h5 class="card-title">{{ author }}</h5>
+    <p class="card-text">Date of birth: {{ author.date_of_birth }}</p>
+      <h4>Books: </h4>
+      {% for book in books %}
+    <p class="card-text">{{ book }}</p>
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}

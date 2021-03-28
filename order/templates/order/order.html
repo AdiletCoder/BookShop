@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title%} Order {% endblock %}
+{% block content %}
+<div class="container" >
+<form method="post" class="row g-3" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">{{ form.email.label_tag }}</label>
+    <input name="email" type="email" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">{{ form.phone.label_tag }}</label>
+    <input name="phone" type="text" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">{{ form.address.label_tag }}</label>
+    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">{{ form.city.label_tag }}</label>
+    <input name="city" type="text" class="form-control" id="inputCity">
+  </div>
+  <div class="col-md-4">
+      <label for="inputState" class="form-label">{{ form.book.label_tag }}</label>
+    <select name="book" id="inputState" class="form-select">
+      <option value="{{ book.id }}" selected>{{ book }}</option>
+
+    </select>
+  </div>
+  <div class="col-12">
+    <button style="margin: 10px" type="submit" class="btn btn-primary">Submit order</button>
+  </div>
+</form>
+</div>
+{% endblock %}
